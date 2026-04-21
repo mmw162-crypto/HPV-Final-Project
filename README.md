@@ -26,11 +26,16 @@ Install SRA-tools through an environment:
 
 `prefetch SRR27287968`
 
+`prefetch SRR27287969`
+
 - Cd into new downloaded directory
 - Change files into fastq format, then compress.
 `fasterq-dump *.sra`
 
 `gzip *.fastq`
+
+used a slurm script to unzip files: 
+
 
 ## running fastqc on raw files
 Enter interactive mode on a compute node (from where you are) with:
