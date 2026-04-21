@@ -36,14 +36,23 @@ Install SRA-tools through an environment:
 
 used a slurm script to unzip files: 
 `#!/bin/bash`
+
 `#SBATCH --job-name="transfer"`
+
 `#SBATCH --output="%x.o%j"`
+
 `#SBATCH --nodes=1`
+
 `#SBATCH --ntasks=1`
+
 `#SBATCH --cpus-per-task=4`
+
 `#SBATCH --time=5-00`
+
 `#SBATCH --mem=10G`
+
 `#SBATCH --mail-type=END,FAIL`
+
 `#SBATCH --mail-user=mam840@georgetown.edu`
 
 `# running gzip to unzip the SRR27287968 files`
@@ -53,16 +62,27 @@ used a slurm script to unzip files:
 - transferring files from personal directory to bucket:
 
 `#!/bin/bash`
+
 `#SBATCH --job-name="transfer"`
+
 `#SBATCH --output="%x.o%j"`
+
 `#SBATCH --nodes=1`
+
 `#SBATCH --ntasks=1`
+
 `#SBATCH --cpus-per-task=4`
+
 `#SBATCH --time=5-00`
+
 `#SBATCH --mem=10G`
+
 `#SBATCH --mail-type=END,FAIL`
+
 `#SBATCH --mail-user=mam840@georgetown.edu`
+
 `# Load gsutil module`
+
 `module load google-cloud-sdk`
 
 `# For example, to transfer the file "Sample1_sorted.bam" under your home directory to the bucket, use this but just change/check the file name.`
