@@ -19,6 +19,7 @@ Install SRA-tools through an environment:
 
 `prefetch SRR27288027'
 
+`prefetch SRR27287968`
 
 - Cd into new downloaded directory
 - Change files into fastq format, then compress.
