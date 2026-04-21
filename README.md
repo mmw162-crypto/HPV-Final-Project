@@ -66,7 +66,7 @@ Put files into the google buckt:
 
 `gcloud storage cp *.html gs://gu-biology-dept-class/mmw162/Bioinformatics_Project_MIM/`
 
- Analysis: 
+ ## FastQC Analysis: 
 Filename	SRR27288027.sra_1.fastq.gz
 
 Total Sequences	28636756
@@ -77,8 +77,9 @@ Sequences flagged as poor quality	0
 
 Sequence length	100
 
-%GC	40
+% GC	40
 
+-----------------------------------------------
 
 Filename	SRR27288027.sra_2.fastq.gz
 
