@@ -21,7 +21,7 @@ Install SRA-tools through an environment:
   
 `prefetch SRR27288028`
 
-`prefetch SRR27288027'
+`prefetch SRR27288027`
 
 `prefetch SRR27287968`
 
