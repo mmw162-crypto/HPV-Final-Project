@@ -3,6 +3,10 @@
 ## Cleaning and Organizing (4/20)
 - created folder under mmw162/Bioinformatics_Final_MIM
 ## Downloading fastq files
+
+log on to compute node 
+`srun --pty bash`
+
 Install SRA-tools through an environment: 
 `module load anaconda3`
 
