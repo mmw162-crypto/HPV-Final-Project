@@ -150,3 +150,71 @@ Sequences flagged as poor quality	0
 Sequence length	100
 
 %GC	40
+
+-------------------------------------------------
+Filename	SRR27287968.sra_1.fastq.gz
+
+Total Sequences	22337013
+
+Total Bases	2.2 Gbp
+
+Sequences flagged as poor quality	0
+
+Sequence length	100
+
+%GC	40
+
+-------------------------------------------------------
+
+Filename	SRR27287968.sra_2.fastq.gz
+
+Total Sequences	22337013
+
+Total Bases	2.2 Gbp
+
+Sequences flagged as poor quality	0
+
+Sequence length	100
+
+%GC	40
+
+--------------------------------------------------
+Filename	SRR27288028.sra_1.fastq.gz
+
+Total Sequences	22870780
+
+Total Bases	2.2 Gbp
+
+Sequences flagged as poor quality	0
+
+Sequence length	100
+
+%GC	39
+
+-----------------------------------------------------
+Filename	SRR27288028.sra_2.fastq.gz
+
+Total Sequences	22870780
+
+Total Bases	2.2 Gbp
+
+Sequences flagged as poor quality	0
+
+Sequence length	100
+
+%GC	39
+
+-----------------------------------------------
+Filename	SRR27287969.sra_1.fastq.gz
+
+Total Sequences	23583443
+
+Total Bases	2.3 Gbp
+
+Sequences flagged as poor quality	0
+
+Sequence length	100
+
+%GC	40
+
+----------------------------------------------------
