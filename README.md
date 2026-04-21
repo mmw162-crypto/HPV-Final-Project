@@ -30,3 +30,36 @@ Install SRA-tools through an environment:
 `fasterq-dump *.sra`
 
 `gzip *.fastq`
+## running fastqc on raw files
+Enter interactive mode on a compute node (from where you are) with:
+
+`srun --pty bash
+Confirm the prompt changes (e.g., from net-ID@m12-controller to a compute node indicator).​
+
+Then load FastQC using 
+
+` module load fastqc
+
+You can confirm FastQC is available and see options:
+
+`fastqc -h
+
+Create a directory for the reports (once per dataset)
+
+`mkdir -p fastqc_out
+
+Then run FastQC. -o fastqc_out tells FastQC to put the .html and .zip outputs in the fastqcout directory.
+
+`fastqc -o fastqc_out  SRR27288027.sra_*.fastq
+
+Example with two paired‑end files:
+
+`fastqc -o fastqc_out SRR27288027.sra_*.fastq.gz
+
+Still on the compute node:
+
+`ls fastqc_out
+
+Put files into the google buckt:
+
+`gcloud storage cp *.html gs://gu-biology-dept-class/mmw162/Bioinformatics_Project_MIM/
