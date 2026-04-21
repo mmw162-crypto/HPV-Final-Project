@@ -38,7 +38,7 @@ Confirm the prompt changes (e.g., from net-ID@m12-controller to a compute node i
 
 Then load FastQC using 
 
-` module load fastqc
+`module load fastqc
 
 You can confirm FastQC is available and see options:
 
