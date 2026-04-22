@@ -218,3 +218,52 @@ Sequence length	100
 %GC	40
 
 ----------------------------------------------------
+## run trimmomatic to trim reads 
+`#!/bin/bash`
+
+`#SBATCH --job-name="sample6.A"`
+
+`#SBATCH --output="%x.o%j"`
+
+`#SBATCH --mail-type=END,FAIL --mail-user=mmw162@georgetown.edu`
+
+`#SBATCH --nodes=1`
+
+`#SBATCH --ntasks=1`
+
+`#SBATCH --cpus-per-task=4`
+
+`#SBATCH --time=03:00:00`
+
+`#SBATCH --mem=10G`
+
+`shopt -s expand_aliases`
+
+`module load trimmomatic`
+
+# input files
+`R1=/home/mmw162/fastqc_final/SRR27288027/SRR27288027.sra_1.fastq.gz`
+
+`R2=/home/mmw162/fastqc_final/SRR27288027/SRR27288027.sra_2.fastq.gz`
+
+# adapters
+`adapters=/home/mmw162/mmw162/HW4_input_files/TruSeq3-PE.fa`
+
+# output directory
+`OUTDIR=/home/mmw162/fastqc_final/trimmed`
+
+`mkdir -p $OUTDIR`
+
+`trimmomatic PE -threads $SLURM_CPUS_PER_TASK \`
+
+`$R1 $R2 \`
+
+`$OUTDIR/SRR27288028_1.paired.fq.gz $OUTDIR/SRR27288028_1.unpaired.fq.gz \`
+
+`$OUTDIR/SRR27288028_2.paired.fq.gz $OUTDIR/SRR27288028_2.unpaired.fq.gz \`
+
+`ILLUMINACLIP:$adapters:2:30:10 \`
+
+`SLIDINGWINDOW:4:20 \`
+
+`MINLEN:50`
