@@ -330,3 +330,76 @@ Still on the compute node:
 Put files into the google buckt:
 
 `gcloud storage cp *.html gs://gu-biology-dept-class/Bioinformatics_Project_MIM/fastq_trimmed`
+
+## use Bowtie2 to align reads to the human genome 
+- downloaded human reference genome GRCh38 from the colorectal cancer group's bucket
+- use a slurm script to run bowtie2 for each sample
+
+`#!/bin/bash`
+
+`#SBATCH --job-name=bowtie2_HPV`
+
+`#SBATCH --output=/home/mam840/finalproject.MIM/logs/bowtie-%j.out`
+
+`#SBATCH --error=/home/mam840/finalproject.MIM/logs/bowtie-%j.err`
+
+`#SBATCH --mail-type=END,FAIL`
+
+`#SBATCH --mail-user=mam840@georgetown.edu`
+
+`#SBATCH --time=8:00:00`
+
+`#SBATCH --mem=16G`
+
+`#SBATCH --cpus-per-task=8`
+
+`# ---------SET UP----------`
+
+`SAMPLE="Sample1.69"     #whatever your sample # is!`
+
+`INDEX="/home/mam840/finalproject.MIM/bowtie2/index/GRCh38"`
+
+`OUTPUTDIR="/home/mam840/finalproject.MIM/bowtie2/"`
+
+`# --------- LOAD MODULES ----------`
+
+`module purge`
+
+`module load bowtie2/2.5.4`
+
+`module load samtools`
+
+`# --------- RUN BOWTIE2 AND PIPE TO SAMTOOLS ----------`
+
+`# First make output and log directories; move into OUTPUTDIR`
+
+`mkdir -p "${OUTPUTDIR}"`
+
+`cd "${OUTPUTDIR}"`
+
+`mkdir -p logs`
+
+`echo "Running bowtie2 on sample ${SAMPLE}"`
+
+`bowtie2 -p 8 -x "${INDEX}" \`
+
+  `-1 "/home/mam840/finalproject.MIM/trimmed/SRR27288027_1.paired.fq.gz" \`
+  
+  `-2 "/home/mam840/finalproject.MIM/trimmed/SRR27287969_2.paired.fq.gz" \`
+
+`| samtools view -b - > "${SAMPLE}.bam"`
+
+`echo "Finished running bowtie2 and performing compression"`
+
+`#---------sort and index files`
+
+`echo "Sorting"`
+
+`samtools sort "${SAMPLE}.bam" > "${SAMPLE}_sorted.bam"`
+
+`echo "Indexing"`
+
+`samtools index "${SAMPLE}_sorted.bam"`
+
+`echo "Finished ${SAMPLE}"`
+
