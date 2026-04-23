@@ -267,3 +267,33 @@ Sequence length	100
 `SLIDINGWINDOW:4:20 \`
 
 `MINLEN:50`
+
+## copied trimmed reads to the bucket
+
+`#!/bin/bash`
+
+`#SBATCH --job-name="transfer"`
+
+`#SBATCH --output="%x.o%j"`
+
+`#SBATCH --nodes=1`
+
+`#SBATCH --ntasks=1`
+
+`#SBATCH --cpus-per-task=4`
+
+`#SBATCH --time=5-00`
+
+`#SBATCH --mem=10G`
+
+`#SBATCH --mail-type=END,FAIL`
+
+`#SBATCH --mail-user=mmw162@georgetown.edu`
+
+# Load gsutil module
+
+module load google-cloud-sdk
+
+# For example, to transfer the file "Sample1_sorted.bam" under your home directory to the bucket, use this but just change/check the file name.
+
+gsutil cp /home/mmw162/fastqc_final/trimmed/*.fq.gz gs://gu-biology-dept-class/Bioinformatics_Project_MIM/trimmed_reads
