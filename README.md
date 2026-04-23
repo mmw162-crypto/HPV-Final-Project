@@ -297,3 +297,29 @@ Sequence length	100
 `# For example, to transfer the file "Sample1_sorted.bam" under your home directory to the bucket, use this but just change/check the file name.`
 
 `gsutil cp /home/mmw162/fastqc_final/trimmed/*.fq.gz gs://gu-biology-deptclass/Bioinformatics_Project_MIM/trimmed_reads`
+## Run fastqc on trimmed files
+GOAL: confirm trimming improved sequence read quality, removed adapters etc
+Enter interactive mode on a compute node (from where you are) with:
+
+`srun --pty bash`
+Confirm the prompt changes (e.g., from net-ID@m12-controller to a compute node indicator).​
+
+Then load FastQC using
+
+`module load fastqc`
+
+Create a directory for the reports (once per dataset)
+
+`mkdir -p trimmedfastqc_out`
+
+Then run FastQC. -o trimmedfastqc_out tells FastQC to put the .html and .zip outputs in the fastqcout directory.
+
+`fastqc -o trimmedfastqc_out  SRR27288027.sra_*.fastq`
+
+Still on the compute node:
+
+`ls trimmedfastqc_out`
+
+Put files into the google buckt:
+
+`gcloud storage cp *.html gs://gu-biology-dept-class/Bioinformatics_Project_MIM/fastq_trimmed`
