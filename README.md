@@ -290,10 +290,10 @@ Sequence length	100
 
 `#SBATCH --mail-user=mmw162@georgetown.edu`
 
-# Load gsutil module
+`# Load gsutil module`
 
-module load google-cloud-sdk
+`module load google-cloud-sdk`
 
-# For example, to transfer the file "Sample1_sorted.bam" under your home directory to the bucket, use this but just change/check the file name.
+`# For example, to transfer the file "Sample1_sorted.bam" under your home directory to the bucket, use this but just change/check the file name.`
 
-gsutil cp /home/mmw162/fastqc_final/trimmed/*.fq.gz gs://gu-biology-dept-class/Bioinformatics_Project_MIM/trimmed_reads
+`gsutil cp /home/mmw162/fastqc_final/trimmed/*.fq.gz gs://gu-biology-deptclass/Bioinformatics_Project_MIM/trimmed_reads`
