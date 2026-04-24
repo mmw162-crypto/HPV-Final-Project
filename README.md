@@ -6,7 +6,9 @@ https://www.ncbi.nlm.nih.gov/biosample/38928164
 
 https://www.ncbi.nlm.nih.gov/biosample/38928165
 
-**add Molly's samples***
+https://www.ncbi.nlm.nih.gov/biosample/38928226
+
+https://www.ncbi.nlm.nih.gov/biosample/38928227
 
 ## Cleaning and Organizing (4/20)
 - created folder under mmw162/Bioinformatics_Final_MIM
