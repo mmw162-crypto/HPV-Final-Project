@@ -12,7 +12,7 @@ https://www.ncbi.nlm.nih.gov/biosample/38928227
 
 ## Cleaning and Organizing (4/20)
 - created folder under mmw162/Bioinformatics_Final_MIM
-- 
+- deleted old files from bucket
 ## Downloading fastq files
 log on to compute node 
 `srun --pty bash`
@@ -404,4 +404,13 @@ Put files into the google buckt:
 `samtools index "${SAMPLE}_sorted.bam"`
 
 `echo "Finished ${SAMPLE}"`
+
+
+## use Kracken2/Bracken on human removed reads for taxonomic classification
+
+**ADD SLURM***
+
+## Data Analysis & Results
+
+** add results ***
 
