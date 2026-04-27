@@ -403,6 +403,22 @@ Put files into the google buckt:
 
 `samtools index "${SAMPLE}_sorted.bam"`
 
+`echo "Extracting unmapped (microbial) reads..."`
+
+`samtools fastq \`
+
+    `-f 12 \`
+    
+    `-F 256 \`
+    
+    `-1 "${OUTPUTDIR}/${SAMPLE}_unmapped_R1.fastq.gz" \`
+    
+    `-2 "${OUTPUTDIR}/${SAMPLE}_unmapped_R2.fastq.gz" \`
+    
+    `-@ 8 \`
+    
+    `"${SAMPLE}_sorted.bam"`
+
 `echo "Finished ${SAMPLE}"`
 
 
