@@ -385,7 +385,7 @@ Put files into the google buckt:
 
 `bowtie2 -p 8 -x "${INDEX}" \`
 
-  `-1 "/home/mam840/finalproject.MIM/trimmed/SRR27288027_1.paired.fq.gz" \`
+  `-1 "/home/mam840/finalproject.MIM/trimmed/SRR27287969_1.paired.fq.gz" \`
   
   `-2 "/home/mam840/finalproject.MIM/trimmed/SRR27287969_2.paired.fq.gz" \`
 
