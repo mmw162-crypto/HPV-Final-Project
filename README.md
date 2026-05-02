@@ -1,5 +1,5 @@
 # HPV-Final-Project
-GOAl: Re-run a portion of the pipeline from Jung, et. al, using updated versions of Bowtie2 (v 5.4 vs v5.0) and Kracken2 (vs **ADD** vs v2.1.2) /Bracken (v***ADD*** vs v2.8) to analysis microbial abunance. 
+GOAl: Re-run a portion of the pipeline from Jung, et. al, using updated versions of Bowtie2 (v 5.4 vs v5.0) and Kracken2 (v2.17.1 vs v2.1.2) /Bracken (v3.0.1 vs v2.8) to analysis microbial abunance. 
 
 ## Samples used from NCBI
 https://www.ncbi.nlm.nih.gov/biosample/38928164
@@ -13,7 +13,7 @@ https://www.ncbi.nlm.nih.gov/biosample/38928227
 ## Cleaning and Organizing (4/20)
 - created folder under mmw162/Bioinformatics_Final_MIM
 - deleted old files from bucket
-## Downloading fastq files
+## Downloading fastq files from NCBI 
 log on to compute node 
 `srun --pty bash`
 
@@ -306,6 +306,8 @@ Sequence length	100
 `# For example, to transfer the file "Sample1_sorted.bam" under your home directory to the bucket, use this but just change/check the file name.`
 
 `gsutil cp /home/mmw162/fastqc_final/trimmed/*.fq.gz gs://gu-biology-deptclass/Bioinformatics_Project_MIM/trimmed_reads`
+
+
 ## Run fastqc on trimmed files
 GOAL: confirm trimming improved sequence read quality, removed adapters etc
 Enter interactive mode on a compute node (from where you are) with:
@@ -427,6 +429,11 @@ Put files into the google buckt:
 **ADD SLURM***
 
 ## Data Analysis & Results
+<img width="2801" height="1326" alt="Rplot06" src="https://github.com/user-attachments/assets/fe6c7144-c32e-492f-b5f8-9c7140cdde74" />
+Fig. 1 A) Pie charts represent the mean proportional abundance of bacterial species within the selected samples. B) Bar charts display the proportion of dominant species in individual samples.
 
-** add results ***
+<img width="2522" height="1299" alt="Rplot08" src="https://github.com/user-attachments/assets/23c12952-cea0-4235-b10e-8315ac589f66" />
+Fig. 2 A) Bar charts display shannon diversity index B) Bar charts display species richness.
+
+
 
