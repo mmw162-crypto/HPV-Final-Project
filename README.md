@@ -425,8 +425,91 @@ Put files into the google buckt:
 
 
 ## use Kracken2/Bracken on human removed reads for taxonomic classification
+This script classifies microbial reads from four vaginal metagenome samples using Kraken2 v2.17.1 and estimates species-level abundance with Bracken. Input files are unmapped FASTQ reads after Bowtie2 host removal against GRCh38. The 8GB pre-built standard Kraken2 database was used (k2_standard_08GB, downloaded 2026-02-26).
 
-**ADD SLURM***
+Note on samples 68 and 69: These samples retained high human read contamination (50% and 99% Homo sapiens respectively) even after the redo Bowtie2 step. Human reads were manually removed. Very few microbial reads remained (~8MB and ~1.7MB). Sample 69 also had low sequencing depth (5.6M reads vs 21–27M for other samples). Results for these two samples should be interpreted with caution.
+
+Script: redo_kraken.sh
+`#!/bin/bash
+#SBATCH --job-name=redo_kraken
+#SBATCH --output=redo_kraken_%j.out
+#SBATCH --error=redo_kraken_%j.err
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=icc241@georgetown.edu
+#SBATCH --time=08:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64G
+
+source ~/.bashrc
+conda activate kraken_env
+
+DB=~/hpvproject/slurmscripts
+READS=~/hpvproject/redo_fastq
+OUTDIR=~/hpvproject/kraken2_out_redo
+BRACKEN_OUT=~/hpvproject/bracken_out_redo
+
+mkdir -p $OUTDIR $BRACKEN_OUT
+
+# Sample1.27
+echo "Processing Sample1.27..."
+kraken2 --db $DB --paired --threads 8 --gzip-compressed \
+    --report $OUTDIR/Sample1.27.k2report \
+    --output $OUTDIR/Sample1.27.kraken2 \
+    $READS/Sample1.27.Final_unmapped_R1.fastq.gz \
+    $READS/Sample1.27.Final_unmapped_R2.fastq.gz
+bracken -d $DB -i $OUTDIR/Sample1.27.k2report \
+    -o $BRACKEN_OUT/Sample1.27_species.bracken -r 100 -l S -t 10
+echo "Done: Sample1.27"
+
+# Sample1.28
+echo "Processing Sample1.28..."
+kraken2 --db $DB --paired --threads 8 --gzip-compressed \
+    --report $OUTDIR/Sample1.28.k2report \
+    --output $OUTDIR/Sample1.28.kraken2 \
+    $READS/Sample1.28_unmapped_R1.fastq.gz \
+    $READS/Sample1.28_unmapped_R2.fastq.gz
+bracken -d $DB -i $OUTDIR/Sample1.28.k2report \
+    -o $BRACKEN_OUT/Sample1.28_species.bracken -r 100 -l S -t 10
+echo "Done: Sample1.28"
+
+# Sample1.68
+echo "Processing Sample1.68..."
+kraken2 --db $DB --paired --threads 8 --gzip-compressed \
+    --report $OUTDIR/Sample1.68.k2report \
+    --output $OUTDIR/Sample1.68.kraken2 \
+    $READS/Sample1.68_unmapped_R1.fastq.gz \
+    $READS/Sample1.68_unmapped_R2.fastq.gz
+bracken -d $DB -i $OUTDIR/Sample1.68.k2report \
+    -o $BRACKEN_OUT/Sample1.68_species.bracken -r 100 -l S -t 10
+echo "Done: Sample1.68"
+
+# Sample1.69
+echo "Processing Sample1.69..."
+kraken2 --db $DB --paired --threads 8 --gzip-compressed \
+    --report $OUTDIR/Sample1.69.k2report \
+    --output $OUTDIR/Sample1.69.kraken2 \
+    $READS/Sample1.69.Final_unmapped_R1.fastq.gz \
+    $READS/Sample1.69.Final_unmapped_R2.fastq.gz
+bracken -d $DB -i $OUTDIR/Sample1.69.k2report \
+    -o $BRACKEN_OUT/Sample1.69_species.bracken -r 100 -l S -t 10
+echo "Done: Sample1.69"
+
+echo "All samples complete."
+echo "Kraken2: $OUTDIR"
+echo "Bracken: $BRACKEN_OUT"`
+
+## Human Contamination check
+After running, human contamination was checked per sample:
+`grep -i "homo" ~/hpvproject/kraken2_out_redo/Sample1.27.k2report
+grep -i "homo" ~/hpvproject/kraken2_out_redo/Sample1.28.k2report
+grep -i "homo" ~/hpvproject/kraken2_out_redo/Sample1.68.k2report
+grep -i "homo" ~/hpvproject/kraken2_out_redo/Sample1.69.k2report`
+
+RESULTS: 
+Sample1.27 = 1.55%
+Sample1.28 = low
+Sample1.68 = 50.33%
+Sample1.69 = very high
 
 ## Data Analysis & Results
 <img width="2801" height="1326" alt="Rplot06" src="https://github.com/user-attachments/assets/fe6c7144-c32e-492f-b5f8-9c7140cdde74" />
