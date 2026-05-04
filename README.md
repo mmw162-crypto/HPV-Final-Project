@@ -415,9 +415,11 @@ Put files into the google buckt:
 
 `samtools index "${SAMPLE}_sorted.bam"`
 
-`echo "Extracting unmapped (microbial) reads..."`
+`echo "Finished ${SAMPLE}"`
 
 - the initial slurm script ended here, but when re-run in an attempt to trouble shoot problems in the bacterial composition data, the next section was added to correct the removal of human reads:
+
+`echo "Extracting unmapped (microbial) reads..."`
 
 `samtools fastq \`
 
