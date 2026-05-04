@@ -45,6 +45,7 @@ Install SRA-tools through an environment:
 `gzip *.fastq`
 
 used a slurm script to unzip files: 
+
 `#!/bin/bash`
 
 `#SBATCH --job-name="transfer"`
@@ -69,7 +70,7 @@ used a slurm script to unzip files:
 
 `gzip /home/mam840/finalproject.MIM/SRR27287968/*.fastq`
 
-- transferring files from personal directory to bucket:
+- transferring files from personal directory to bucket with slurm script:
 
 `#!/bin/bash`
 
@@ -95,7 +96,7 @@ used a slurm script to unzip files:
 
 `module load google-cloud-sdk`
 
-`# For example, to transfer the file "Sample1_sorted.bam" under your home directory to the bucket, use this but just change/check the file name.`
+`# transfer file to bucket from your own directory using full path names for both directories.`
 
 `gsutil cp /home/mam840/finalproject.MIM/SRR27287968/SRR27287968.sra_*.fastq.gz gs://gu-biology-dept-class/Bioinformatics_Project_MIM/raw/`
 
@@ -104,13 +105,14 @@ used a slurm script to unzip files:
 Enter interactive mode on a compute node (from where you are) with:
 
 `srun --pty bash`
+
 Confirm the prompt changes (e.g., from net-ID@m12-controller to a compute node indicator).​
 
 Then load FastQC using 
 
 `module load fastqc`
 
-You can confirm FastQC is available and see options:
+onfirm FastQC is available and see options:
 
 `fastqc -h`
 
