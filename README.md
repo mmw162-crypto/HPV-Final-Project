@@ -39,6 +39,7 @@ Install SRA-tools through an environment:
 
 - Cd into new downloaded directory
 - Change files into fastq format, then compress.
+  
 `fasterq-dump *.sra`
 
 `gzip *.fastq`
