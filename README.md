@@ -253,15 +253,18 @@ Sequence length	100
 
 `module load trimmomatic`
 
-# input files
+`# input files`
+
 `R1=/home/mmw162/fastqc_final/SRR27288027/SRR27288027.sra_1.fastq.gz`
 
 `R2=/home/mmw162/fastqc_final/SRR27288027/SRR27288027.sra_2.fastq.gz`
 
-# adapters
+`# adapters`
+
 `adapters=/home/mmw162/mmw162/HW4_input_files/TruSeq3-PE.fa`
 
-# output directory
+`# output directory`
+
 `OUTDIR=/home/mmw162/fastqc_final/trimmed`
 
 `mkdir -p $OUTDIR`
@@ -316,6 +319,7 @@ GOAL: confirm trimming improved sequence read quality, removed adapters etc
 Enter interactive mode on a compute node (from where you are) with:
 
 `srun --pty bash`
+
 Confirm the prompt changes (e.g., from net-ID@m12-controller to a compute node indicator).​
 
 Then load FastQC using
