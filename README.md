@@ -1,5 +1,5 @@
 # HPV-Final-Project
-GOAl: Re-run a portion of the pipeline from Jung, et. al, using updated versions of Bowtie2 (v 5.4 vs v5.0) and Kracken2 (v2.17.1 vs v2.1.2) /Bracken (v3.0.1 vs v2.8) to analysis microbial abunance. 
+GOAl: Re-run a portion of the pipeline from Jung, et. al, using updated versions of Bowtie2 (v 5.4 vs v5.0) and Kracken2 (v2.17.1 vs v2.1.2) /Bracken (v3.0.1 vs v2.8) to analyze microbial abunance's relationship to HPV infection type. 
 
 ## Samples used from NCBI
 https://www.ncbi.nlm.nih.gov/biosample/38928164
