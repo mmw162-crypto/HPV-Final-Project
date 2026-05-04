@@ -345,6 +345,7 @@ Put files into the google buckt:
 ## use Bowtie2 to align reads to the human genome 
 - downloaded human reference genome GRCh38 from the colorectal cancer group's bucket
 - use a slurm script to run bowtie2 for each sample
+- goal: to align reads to human reference genome, and then remove those human reads so only bacterial genes remain
 
 `#!/bin/bash`
 
@@ -413,6 +414,8 @@ Put files into the google buckt:
 `samtools index "${SAMPLE}_sorted.bam"`
 
 `echo "Extracting unmapped (microbial) reads..."`
+
+- the initial slurm script ended here, but when re-run in an attempt to trouble shoot problems in the bacterial composition data, the next section was added to correct the removal of human reads:
 
 `samtools fastq \`
 
